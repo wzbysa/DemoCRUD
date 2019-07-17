@@ -1,0 +1,74 @@
+﻿@model DEMOCRUD.Models.db.Products
+@{
+    ViewData["Title"] = "แก้ไขข้อมูลสินค้า";
+}
+
+<h3 class="alert-info text-center col-md-6">แก้ไขข้อมูลสินค้า</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 card card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId" />
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label">ชื่อสินค้า</label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SupplierId" class="control-label">บริษัทจำหน่าย</label>
+                    <select asp-for="SupplierId" class="form-control"
+                            asp-items="ViewBag.SupplierId"></select>
+                    <span asp-validation-for="SupplierId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label">ประเภทสินคา</label>
+                    <select asp-for="CategoryId" class="form-control"
+                            asp-items="ViewBag.CategoryId"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="QuantityPerUnit" class="control-label">จำนวน/หน่วย</label>
+                    <input asp-for="QuantityPerUnit" class="form-control" />
+                    <span asp-validation-for="QuantityPerUnit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UnitPrice" class="control-label">ราคา</label>
+                    <input asp-for="UnitPrice" class="form-control" />
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UnitsInStock" class="control-label">สต๊อก</label>
+                    <input asp-for="UnitsInStock" class="form-control" />
+                    <span asp-validation-for="UnitsInStock" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UnitsOnOrder" class="control-label">ระหว่างสั่งซื้อ</label>
+                    <input asp-for="UnitsOnOrder" class="form-control" />
+                    <span asp-validation-for="UnitsOnOrder" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReorderLevel" class="control-label">จุดสั่งซื้อ</label>
+                    <input asp-for="ReorderLevel" class="form-control" />
+                    <span asp-validation-for="ReorderLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Discontinued" />
+                        @Html.DisplayNameFor(model => model.Discontinued)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="บันทึก" class="btn btn-info btn-block" />
+                </div>
+            </form>
+            <div>
+                <a asp-action="Index" class="btn btn-primary btn-block">แสดงสินค้าทั้งหมด</a>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

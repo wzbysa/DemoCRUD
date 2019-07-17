@@ -1,0 +1,24 @@
+@model DEMOCRUD.Models.db.Categories
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>รายละเอียดประเภทสินค้า</h1><hr />
+<div class="card col-md-6 border-success">
+    <div class="card-header alert-success">
+        <h2>
+            @Html.DisplayFor(model => model.CategoryId) :
+            @Html.DisplayFor(model => model.CategoryName)
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="card-text">ชื่อประเภทสินค้า : @Html.DisplayFor(model => model.CategoryName)</div>
+        <div class="card-text">คำอธิบาย : @Html.DisplayFor(model => model.Description)</div>              
+    </div>
+
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">แก้ไขข้อมูล</a>
+        <a asp-action="Index" class="btn btn-primary">แสดงประเภทสินค้าทั้งหมด</a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DEMOCRUD.Models.db.Products>
+@{
+    ViewData["Title"] = "รายการสินค้า";
+}
+
+<a href="/Products/Index" class="btn btn-info">กลับหน้าแรก</a><br /><br />
+<table class="table">
+    <tr>
+        <th>รหัสสินค้า</th>
+        <th>ชื่อสินค้า</th>
+        <th>ราคาสินค้า</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.UnitPrice</td>
+        </tr>
+    }
+</table>
+

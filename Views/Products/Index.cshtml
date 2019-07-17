@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DEMOCRUD.Models.db.Products>
+
+@{
+    ViewData["Title"] = "รายการสินค้าทั้งหมด";
+}
+
+<h1>รายการสินค้าทั้งหมด</h1>
+<p>
+    <a asp-action="Create" class="btn btn-success float-md-right">เพิ่มสินค้าใหม่</a><br /><br />
+</p>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th></th>
+            <th class="col-md-3">ชื่อสินค้า</th>
+            <th>จำนวนต่อหน่วย</th>
+            <th>ราคา</th>
+            <th>ในสต๊อก</th>
+            <th class="col-sm-3">ระหว่างสั่งซื้อ</th>
+            <th>จุดสั่งซื้อ</th>
+            <th>สถานะ</th>
+            <th>ประเภทสินค้า</th>
+            <th>บริษัทจัดจำหน่าย</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" class="btn btn-primary"
+                   asp-route-id="@item.ProductId">รายละเอียด</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning btn-block"
+                   asp-route-id="@item.ProductId">แก้ไข</a>
+                <a asp-action="Delete" class="btn btn-danger btn-block"
+                   asp-route-id="@item.ProductId">ลบข้อมูล</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

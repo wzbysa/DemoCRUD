@@ -1,0 +1,36 @@
+@model DEMOCRUD.Models.db.Categories
+@{
+    ViewData["Title"] = "แก้ไขข้อมูลประเภทสินค้า";
+}
+
+<h3 class="alert-info text-center col-md-6">แก้ไขข้อมูลประเภทสินค้า</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 card card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CategoryId" />
+                <div class="form-group">
+                    <label asp-for="CategoryName" class="control-label">ชื่อประเภทสินค้า</label>
+                    <input asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">คำอธิบาย</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>                
+                <div class="form-group">
+                    <input type="submit" value="บันทึก" class="btn btn-info btn-block" />
+                </div>
+            </form>
+            <div>
+                <a asp-action="Index" class="btn btn-primary btn-block">แสดงสินค้าทั้งหมด</a>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>
